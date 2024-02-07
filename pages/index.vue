@@ -1,11 +1,15 @@
 <template>
-  <div>
-    <h1>hola!!!!!!!!!!!!!!!!!!</h1>
-  </div>
+  <div></div>
 </template>
 
 <script>
-export default {};
+export default {
+  setup() {
+    useHead({
+      title: "Camino del Errante",
+    });
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>
