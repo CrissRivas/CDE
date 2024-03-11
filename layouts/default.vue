@@ -4,15 +4,25 @@
       :collapse="collapse"
       color="white"
       density="compact"
-      class="mb-4"
+      class="mb-2"
     >
-      <template v-if="collapse" v-slot:prepend>
-        <v-btn icon @click="collapse = !collapse">
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
+      <template v-slot:prepend>
+        <NuxtLink to="/" class="d-flex align-center">
+          <img src="assets/png/logo.png" height="40 " />
+        </NuxtLink>
       </template>
-      <v-row justify="center">
-        <v-col v-if="!collapse" cols="3">
+      <v-row justify="center" align="center">
+        <v-col v-if="!collapse" cols="10" class="d-sm-none">
+          <v-text-field
+            density="compact"
+            variant="solo"
+            label="Buscar temas"
+            append-inner-icon="mdi-magnify"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-col>
+        <v-col v-if="!collapse" cols="4" class="d-none d-sm-flex">
           <v-text-field
             density="compact"
             variant="solo"
@@ -26,7 +36,7 @@
 
       <template v-slot:append>
         <v-btn icon @click="collapse = !collapse">
-          <v-icon size="x-large" v-if="collapse">mdi-chevron-right</v-icon>
+          <v-icon size="x-large" v-if="collapse">mdi-magnify</v-icon>
           <v-icon size="x-large" v-if="!collapse">mdi-chevron-left</v-icon>
         </v-btn>
       </template>
