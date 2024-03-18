@@ -128,8 +128,7 @@ export default {
     },
   },
   methods: {
-    makeChart(array) {
-      
+    makeChart(array) { 
       array.forEach((a) => {
         this.data.labels.push("$ " + comaFormat(a.price));
         this.data.datasets[0].data.push(a.sponsors);
