@@ -94,6 +94,9 @@ export default {
       required: false,
     },
   },
+  mounted() {
+    this.findTotal();
+  },
   methods: {
     findTotal() {
       this.percentage = (this.collected * 100) / this.goal;

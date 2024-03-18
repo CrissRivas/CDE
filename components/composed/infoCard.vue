@@ -58,7 +58,7 @@
 export default {
   data() {
     return {
-      totals: 50,
+      totals: 0,
       progress: 0,
     };
   },
@@ -75,6 +75,9 @@ export default {
       type: Number,
       required: false,
     },
+  },
+  mounted() {
+    this.findTotal();
   },
   methods: {
     findTotal() {

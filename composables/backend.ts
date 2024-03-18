@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:4000/v1/";
+const API_BASE_URL = "https://api.caminodelerrante.com/v1/";
 export async function getKickAnalitycs(): Promise<any> {
   const { data } = await useFetch(API_BASE_URL + "kick/analitycs");
   return data;
@@ -6,6 +6,11 @@ export async function getKickAnalitycs(): Promise<any> {
 
 export async function getKick(): Promise<any> {
   const { data } = await useFetch(API_BASE_URL + "kick");
+  return data;
+}
+
+export async function getPr(id: string): Promise<any> {
+  const { data } = await useFetch(API_BASE_URL + "kick/" + id);
   return data;
 }
 
@@ -76,6 +81,10 @@ export class generalResponse {
     collected: 0,
     collected_fail: 0,
   };
+  years: table[] = [];
+  years_chart: chartData = new chartData();
+  months: table[] = [];
+  months_chart: chartData = new chartData();
   states: table[] = [];
   states_chart: chartData = new chartData();
   printed: number = 0;

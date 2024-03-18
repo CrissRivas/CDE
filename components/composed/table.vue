@@ -87,7 +87,8 @@ export default {
   computed: {
     pageCount() {
       const pages = Math.ceil(this.items.length / this.itemsPerPage);
-      if (pages == 1) this.pagination = false;
+      pages <= 1 ? (this.pagination = false) : (this.pagination = true);
+      // if (pages == 1) this.pagination = false;
       return pages;
     },
   },
