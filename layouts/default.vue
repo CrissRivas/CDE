@@ -37,7 +37,7 @@
       <template v-slot:append>
         <v-btn icon @click="collapse = !collapse">
           <v-icon size="x-large" v-if="collapse">mdi-magnify</v-icon>
-          <v-icon size="x-large" v-if="!collapse">mdi-chevron-left</v-icon>
+          <v-icon size="x-large" v-else>mdi-chevron-left</v-icon>
         </v-btn>
       </template>
     </v-toolbar>
@@ -46,12 +46,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      collapse: true,
-    };
-  },
-};
+<script setup lang="ts">
+import { ref } from "vue";
+let collapse = ref(true);
 </script>

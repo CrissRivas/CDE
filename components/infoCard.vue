@@ -1,11 +1,11 @@
 <template>
-  <v-card max-width="600" min-width="300" min-height="250">
-    <v-card-title>
-      {{ title }}
-    </v-card-title>
+  <v-skeleton-loader v-if="ready" class="mx-auto" elevation="12" type="card" />
+  <v-card min-width="300" min-height="250" v-else>
+    <v-card-title> Proyectos </v-card-title>
+
     <v-row justify="center">
       <v-col>
-        <p class="text-h2 font-weight-bold text-center">{{ totals }}</p>
+        <p class="text-h2 font-weight-bold text-center">{{ table.name }}</p>
       </v-col>
     </v-row>
     <v-row>
@@ -13,7 +13,7 @@
         <v-row justify="center" align="center">
           <v-tooltip activator="parent" location="top">Logrados</v-tooltip>
           <p class="text-h4 font-weight-bold text-amber-accent-4">
-            {{ success }}
+            {{ table.successful }}
           </p>
           <v-icon
             icon="mdi-crown"
@@ -21,21 +21,21 @@
             color="amber-accent-4"
           ></v-icon>
           <p class="font-weight-thin text-caption text-grey-darken-1">
-            {{ progress.toFixed(2) }} %
+            {{ progress }} %
           </p>
         </v-row>
       </v-col>
       <v-col>
         <v-row justify="center" align="center">
           <v-tooltip activator="parent" location="top">Fallidos</v-tooltip>
-          <p class="text-h4 text-grey-darken-1">{{ fail }}</p>
+          <p class="text-h4 text-grey-darken-1">{{ table.unsuccessful }}</p>
           <v-icon
             icon="mdi-skull"
             size="x-large"
             color="grey-darken-1"
           ></v-icon>
           <p class="font-weight-thin text-caption text-grey-darken-1">
-            {{ 100 - progress.toFixed(2) }} %
+            {{ 100 - progress }} %
           </p>
         </v-row>
       </v-col>
@@ -54,46 +54,11 @@
   </v-card>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      totals: 0,
-      progress: 0,
-    };
-  },
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    success: {
-      type: Number,
-      required: false,
-    },
-    fail: {
-      type: Number,
-      required: false,
-    },
-  },
-  mounted() {
-    this.findTotal();
-  },
-  methods: {
-    findTotal() {
-      this.totals = this.success + this.fail;
-      this.progress = (this.success * 100) / this.totals;
-    },
-  },
-  watch: {
-    success() {
-      this.findTotal();
-    },
-    fail() {
-      this.findTotal();
-    },
-  },
-};
+<script setup lang="ts">
+const props = defineProps(["table", "ready"]);
+const progress = computed(() =>
+  ((props.table.successful / props.table.name) * 100).toFixed(2)
+);
 </script>
 
 <style lang="scss" scoped></style>
