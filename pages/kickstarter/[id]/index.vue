@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <v-container>
     <v-row>
       <v-col sm="9">
@@ -200,7 +200,7 @@
 
     <v-row>
       <v-col>
-        <!-- <tableSponsors :items="getP.sponsored" /> -->
+        <tableSponsors :items="getP.sponsored" />
       </v-col>
     </v-row>
   </v-container>
@@ -212,9 +212,6 @@ import { format, differenceInDays } from "date-fns";
 import es from "date-fns/locale/es";
 
 export default {
-  components: {
-    tableSponsors,
-  },
   data() {
     return {
       id: this.$route.params.id,
@@ -276,5 +273,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped></style> -->
+
+<template>
+  <div></div>
+</template>
+
+<script setup></script>
 
 <style lang="scss" scoped></style>
