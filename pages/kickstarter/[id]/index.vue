@@ -200,14 +200,14 @@
 
     <v-row>
       <v-col>
-        <tableSponsors :items="getP.sponsored" />
+        <!-- <tableSponsors :items="getP.sponsored" /> -->
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import tableSponsors from "@/components/composed/tableSponsors.vue";
+// import tableSponsors from "@/components/composed/tableSponsors.vue";
 import { format, differenceInDays } from "date-fns";
 import es from "date-fns/locale/es";
 
