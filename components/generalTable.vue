@@ -21,6 +21,15 @@
       <v-icon icon="mdi-skull" size="x-large" color="grey-darken-1"></v-icon>
     </template>
 
+    <template v-slot:item.name="{ item }">
+      <p>
+        {{
+          typeof item.name === "string"
+            ? item.name
+            : prefix + (cast ? fnum(item.name) : item.name) + subfix
+        }}
+      </p>
+    </template>
     <template v-slot:item.successful="{ item }">
       <p class="font-weight-bold text-amber-accent-4">{{ item.successful }}</p>
     </template>
@@ -35,7 +44,7 @@
           rounded="circle"
           density="compact"
           :length="pageCount"
-        ></v-pagination>
+        />
       </div>
     </template>
   </v-data-table>
@@ -44,7 +53,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const props = defineProps(["table", "title"]);
+const props = defineProps(["table", "title", "prefix", "subfix", "cast"]);
 
 const itemsPerPage = 10;
 const headers = [
