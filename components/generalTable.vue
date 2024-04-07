@@ -52,11 +52,18 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import type { TableItem } from "~/composables/apiDTO";
 
-const props = defineProps(["table", "title", "prefix", "subfix", "cast"]);
+const props = defineProps<{
+  table: TableItem[]; // Declara que el prop table es un array de elementos de tipo TableItem
+  title: string;
+  prefix: { type: string; required: false; default: "" };
+  subfix: { type: string; required: false; default: "" };
+  cast: boolean;
+}>();
 
 const itemsPerPage = 10;
-const headers = [
+const headers: any = [
   {
     key: "name",
     align: "start",

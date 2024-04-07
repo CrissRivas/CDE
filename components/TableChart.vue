@@ -41,6 +41,10 @@ const props = defineProps([
   "subfix",
   "cast",
 ]);
+
+const emit = defineEmits(["refresh"]);
+
+
 </script>
 
 <style lang="scss" scoped></style>

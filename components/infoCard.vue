@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 const props = defineProps(["table", "ready"]);
-const progress = computed(() =>
+const progress: any = computed(() =>
   ((props.table.successful / props.table.name) * 100).toFixed(2)
 );
 </script>
